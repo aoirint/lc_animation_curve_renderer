@@ -1,0 +1,36 @@
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",  # pyflakes
+  "I",  # isort
+  "B",  # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "UP",  # pyupgrade
+]
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "session"
+
+[project]
+name = "animation-curve-renderer"
+version = "0.0.0"
+description = "An animation curve renderer"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.17.1",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.1.0",
+    "ruff>=0.12.8",
+]
