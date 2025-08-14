@@ -26,7 +26,7 @@ uv run mypy .
 ## 実行方法
 
 ```shell
-uv run python -m animation_curve_renderer --input-file <keyframe_file>
+uv run python -m animation_curve_renderer --input_file <keyframe_file>
 ```
 
 `keyframe_file`は、`time`、`value`、`in_tangent`、`out_tangent` の列で構成されるTSVファイルです。
