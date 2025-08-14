@@ -51,3 +51,25 @@ class HermiteCurve:
         h11 = u**3 - u**2
 
         return h00 * y0 + h10 * (dx * m0) + h01 * y1 + h11 * (dx * m1)
+
+    def find_t_for_value(self, target_value: float) -> list[float]:
+        """
+        Find t values where the curve evaluates to the target value.
+        Returns a list of t values.
+        """
+        results: list[float] = []
+        for i in range(len(self.keyframes) - 1):
+            k0 = self.keyframes[i]
+            k1 = self.keyframes[i + 1]
+
+            if (k0.value <= target_value <= k1.value) or (
+                k1.value <= target_value <= k0.value
+            ):
+                # 線形補間でtを求める
+                t0, t1 = k0.time, k1.time
+                y0, y1 = k0.value, k1.value
+                if y1 != y0:
+                    t = t0 + (target_value - y0) * (t1 - t0) / (y1 - y0)
+                    results.append(t)
+
+        return results

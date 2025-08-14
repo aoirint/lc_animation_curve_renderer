@@ -85,27 +85,20 @@ async def execute_cli(
         print(f"Expected value with limit (x <= {x}): {expected_value:.4f}")
 
     # Y=0となるtを探索し、同様にプロット
-    zero_crossings: list[float] = []
-    for i in range(len(ts) - 1):
-        if ys[i] * ys[i + 1] < 0:
-            # 線形補間でゼロ点近似
-            t0, t1 = ts[i], ts[i + 1]
-            y0, y1 = ys[i], ys[i + 1]
-            t_zero = t0 - y0 * (t1 - t0) / (y1 - y0)
-            zero_crossings.append(t_zero)
-
-    for x in zero_crossings:
-        y = 0.0
-        plt.plot(x, y, "ro")
-        plt.text(
-            x,
-            y,
-            f"({x:.4f}, 0.0000)",
-            color="red",
-            fontsize=12,
-            ha="right",
-            va="bottom",
-        )
+    special_ys = [0.0]
+    for y in special_ys:
+        xs = curve.find_t_for_value(target_value=y)
+        for x in xs:
+            plt.plot(x, y, "ro")
+            plt.text(
+                x,
+                y,
+                f"({x:.4f}, 0.0000)",
+                color="red",
+                fontsize=12,
+                ha="right",
+                va="bottom",
+            )
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(
