@@ -10,7 +10,7 @@ from matplotlib.ticker import MultipleLocator
 from .hermite_curve import HermiteCurve
 from .keyframe import load_keyframes_from_tsv
 
-logger = logging.getLogger("animation_curve_renderer")
+logger = logging.getLogger("lc_animation_curve_renderer")
 
 
 async def execute_cli(

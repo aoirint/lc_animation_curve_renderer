@@ -19,9 +19,9 @@ strict = true
 asyncio_default_fixture_loop_scope = "session"
 
 [project]
-name = "animation-curve-renderer"
+name = "lc-animation-curve-renderer"
 version = "0.0.0"
-description = "An animation curve renderer"
+description = "An animation curve renderer for Lethal Company."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
